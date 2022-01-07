@@ -1,16 +1,18 @@
-export default {
-  type: 'postgres',
-  schema: 'public',
-  host: process.env.POSTGRES_HOST,
-  port: parseInt(process.env.POSTGRES_PORT as string),
-  username: process.env.POSTGRES_USER,
-  password: process.env.POSTGRES_PASSWORD,
-  database: process.env.POSTGRES_DATABASE,
-  entities: ['src/**/*.entity{.ts,.js}'],
-  migrations: ['migrations/*{.ts,.js}'],
-  cli: {
-    migrationsDir: 'migrations',
-  },
-  seeds: ['seeds/**/*{.seed.ts,.seed.js}'],
-  factories: ['seeds/**/*{.factory.ts,.factory.js}'],
-};
+export const config = {
+  port: parseInt(process.env.PORT, 10) || 3000,
+  databases: {
+    host: process.env.DATABASE_HOST,
+    port: parseInt(process.env.DATABASE_PORT, 10) || 5432,
+    username: process.env.POSTGRES_USER,
+    password: process.env.POSTGRES_PASSWORD,
+    database: process.env.POSTGRES_DATABASE,
+    synchronize: false,
+    retryDelay: 3000,
+    autoLoadEntities: true,
+    retryAttempts: 10,
+    cli: {
+      migrationsDir: 'migrations',
+    }
+  }
+
+}
