@@ -3,25 +3,23 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { PostsModule } from './posts/posts.module';
 import { ConfigModule } from '@nestjs/config';
 
-import { config } from '../ormconfig'
-
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: '.env'
+      isGlobal: true
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: '127.0.0.1',
-      port: 5432,
-      username: 'postgres',
-      password: 'developer',
-      database: 'netsjs-test',
+      host: process.env.POSTGRES_HOST,
+      port: parseInt(process.env.POSTGRES_PORT as string),
+      username: process.env.POSTGRES_USER,
+      password: process.env.POSTGRES_PASSWORD,
+      database: process.env.POSTGRES_DATABASE,
       synchronize: false,
       retryDelay: 3000,
-      autoLoadEntities: true,
-      retryAttempts: 10
+      retryAttempts: 10,
+      autoLoadEntities: true
     }),
     PostsModule,
   ],
