@@ -22,8 +22,8 @@
     "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js",
     "migrations:generate": "yarn run typeorm migration:generate -n",
     "migrations:run": "yarn run typeorm migration:run",
-    "seed:run": "ts-node -r tsconfig-paths/register ./node_modules/typeorm-seeding/dist/cli.js seed",
-    "migrations:revert": "func() { if [ \"$NODE_ENV\" = \"local\" ] || [ -z \"$NODE_ENV\" ]; then ts-node cli/index.ts migrations:down-to-target $@; else cd ./dist && node cli/index.js migrations:down-to-target $@; fi; }; func"
+    "migrations:revert": "yarn run typeorm migration:revert",
+    "seed:run": "ts-node -r tsconfig-paths/register ./node_modules/typeorm-seeding/dist/cli.js seed"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",

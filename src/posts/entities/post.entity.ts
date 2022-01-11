@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne } from 'typeorm';
+import { User } from '../../users/entities/user.entity';
 
 @Entity()
 export class Post {
@@ -20,6 +21,9 @@ export class Post {
 
     @Column({ default: false})
     isDeleted: boolean
+
+    @ManyToOne(() => User, user => user.posts)
+    user: User;
 
     @CreateDateColumn({
         name: 'created_at',

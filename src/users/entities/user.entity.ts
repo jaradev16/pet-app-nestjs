@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Post } from "../../posts/entities/post.entity"
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from "typeorm";
 
 @Entity()
 export class User {
@@ -22,6 +23,9 @@ export class User {
     
     @Column({ default: false })
     isActive: boolean;
+
+    @OneToMany(() => Post, post => post.user)
+    posts: Post[]
 
     @CreateDateColumn({
         name: 'created_at',
