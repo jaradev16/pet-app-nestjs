@@ -8,11 +8,11 @@ export class AuthController {
 
     @Post()
     signinLocal(){
-        return this.authService.signinLocal();
+        // return this.authService.signinLocal();
     }
 
     @Post()
     signupLocal(){
-        return this.authService.signupLocal();
+        // return this.authService.signupLocal();
     }
 }

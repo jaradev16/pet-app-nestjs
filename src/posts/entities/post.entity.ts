@@ -5,7 +5,7 @@ import { User } from '../../users/entities/user.entity';
 export class Post {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    id?: number;
 
     @Column({ length: 255 })
     title: string;
@@ -22,7 +22,7 @@ export class Post {
     @Column({ default: false})
     isDeleted: boolean
 
-    @ManyToOne(() => User, user => user.posts)
+    @ManyToOne(() => User, user => user.posts, { nullable: true })
     user: User;
 
     @CreateDateColumn({
