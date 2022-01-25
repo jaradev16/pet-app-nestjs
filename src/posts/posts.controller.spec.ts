@@ -39,9 +39,6 @@ describe('PostsController', () => {
       content: dto.content
     });
     expect(mockUserService.create).toHaveBeenCalledWith(dto)
-
-
-
   });
 
 

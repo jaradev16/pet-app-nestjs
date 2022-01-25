@@ -5,7 +5,7 @@ import { User } from '../../users/entities/user.entity';
 export class Post {
 
     @PrimaryGeneratedColumn()
-    id?: number;
+    id: number;
 
     @Column({ length: 255 })
     title: string;
@@ -32,6 +32,9 @@ export class Post {
 
     })
     createdAt: Date;
+
+    @Column()
+    second_name: string;
 
     @UpdateDateColumn({
         name: 'updated_at',
