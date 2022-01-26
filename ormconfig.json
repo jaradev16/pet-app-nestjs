@@ -1,0 +1,15 @@
+{
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "postgres",
+    "password": "developer",
+    "database": "netsjs-test",
+    "migrationsTableName": "migrations",
+    "entities": ["dist/**/*.entity{.ts,.js}"],
+    "synchronize": true,
+    "migrations": ["migrations/*{.ts,.js}"],
+    "cli": {
+        "migrationsDir": "migrations"
+    }
+}
